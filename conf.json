@@ -1,0 +1,22 @@
+[
+    {
+        "name": "main_feed_qps",
+        "mail": [
+            "zhenliang@staff.weibo.com"
+        ],
+        "slack": {
+            "channel": "#warning",
+            "username": "UVE Test Warning"
+        }
+    },
+    {
+        "name":"main_feed_response_time",
+        "mail": [
+            "zhenliang@staff.weibo.com"
+        ],
+        "slack": {
+            "channel": "#zhenliang_test",
+            "username": "UVE Test Zhenliang_test"
+        }
+    }
+]
