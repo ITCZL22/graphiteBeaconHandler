@@ -1,3 +1,3 @@
 
 gbh:
-	go install uve.io/uve/graphiteBeaconHandler/gbhserver
+	go install itczl.com/itczl/graphiteBeaconHandler/gbhserver

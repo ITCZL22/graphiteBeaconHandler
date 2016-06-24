@@ -1,22 +1,24 @@
-[
+{
+    "main_feed_qps":
     {
-        "name": "main_feed_qps",
         "mail": [
-            "zhenliang@staff.weibo.com"
+            "itczl@itczl.com"
         ],
         "slack": {
-            "channel": "#warning",
-            "username": "UVE Test Warning"
+            "webhook": "https://hooks.slack.com/services/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",
+            "promote": "itczl.access.qps.uve-service-main_feed",
+            "username": "ITCZL Alter"
         }
     },
+    "main_feed_response_time":
     {
-        "name":"main_feed_response_time",
         "mail": [
-            "zhenliang@staff.weibo.com"
+            "itczl@itczl.com"
         ],
         "slack": {
-            "channel": "#zhenliang_test",
-            "username": "UVE Test Zhenliang_test"
+            "webhook": "https://hooks.slack.com/services/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",
+            "promote": "itczl.access.response_time.uve-service-main_feed.mean",
+            "username": "ITCZL Alter"
         }
     }
-]
+}

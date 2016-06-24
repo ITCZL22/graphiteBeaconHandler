@@ -1,3 +1,6 @@
+//Copyright 201606 itczl. All rights reserved.
+
+//gbhserver is used to specify slack beacon
 package main
 
 import (
@@ -5,8 +8,8 @@ import (
 	"log"
 	"os"
 
-	"uve.io/uve/graphiteBeaconHandler/config"
-	"uve.io/uve/graphiteBeaconHandler/httpservice"
+	"itczl.com/itczl/graphiteBeaconHandler/config"
+	"itczl.com/itczl/graphiteBeaconHandler/httpservice"
 )
 
 const (
@@ -17,11 +20,6 @@ const (
 )
 
 var configFile = flag.String("conf", "conf.json", "config file")
-
-//放到request中
-//var name = flag.String("name", "", "name")
-//var level = flag.String("level", "", "level")
-//var value = flag.String("value", "", "value")
 
 func main() {
 	flag.Parse()
