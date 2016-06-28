@@ -10,13 +10,14 @@ import (
 )
 
 type alter struct {
-	//Mail  []string `json:"nail"`
-	Mail  []string
-	Slack struct {
+	MailFrom string   `json:"mail_from"`
+	MailTo   []string `json:"mail_to"`
+	Slack    struct {
 		Webhook  string
-		Promote  string
+		Prompt   string
 		Username string
 	}
+	Host string
 }
 
 type Config map[string]alter

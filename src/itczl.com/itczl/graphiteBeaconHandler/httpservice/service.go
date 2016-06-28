@@ -19,8 +19,8 @@ import (
 type serverContext struct {
 	sc                                  config.Config
 	to                                  []string
-	value, level                        string
-	name, promote                       string
+	from                                string
+	value, level, name, prompt          string
 	icon_emoji, webhook, username, note string
 }
 
@@ -28,7 +28,7 @@ func Run(conf config.Config) error {
 	c := &serverContext{}
 	c.sc = conf
 	s := &http.Server{
-		Addr:           "10.77.96.56:8883",
+		Addr:           c.sc["hosts"].Host,
 		Handler:        c,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
@@ -47,9 +47,10 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 
 	v := c.sc[req.Form["name"][0]]
-	c.to = v.Mail
+	c.to = v.MailTo
+	c.from = v.MailFrom
 	c.webhook = v.Slack.Webhook
-	c.promote = v.Slack.Promote
+	c.prompt = v.Slack.Prompt
 	c.username = v.Slack.Username
 	c.name = req.Form["name"][0]
 	c.value = req.Form["value"][0]
@@ -83,8 +84,8 @@ func (c *serverContext) mail() error {
 	msg := []byte("To: zhenliang@staff.weibo.com\r\n" +
 		"Subject: UVE Alter\r\n" +
 		"\r\n" +
-		strings.ToUpper(c.level) + " " + "[service:" + c.name + "] - " + c.promote + c.note + "\n\n\t\tValue: " + c.value)
-	err := smtp.SendMail("127.0.0.1:25", nil, "uve-graphite-beacon@56.uve.mobile.sina.cn", c.to, msg)
+		strings.ToUpper(c.level) + " " + "[service:" + c.name + "] - " + c.prompt + c.note + "\n\n\t\tValue: " + c.value)
+	err := smtp.SendMail("127.0.0.1:25", nil, c.from, c.to, msg)
 	if err != nil {
 		return fmt.Errorf("httpservice.mail send mail error: %v\n", err)
 	}
@@ -92,7 +93,7 @@ func (c *serverContext) mail() error {
 }
 
 func (c *serverContext) slack() error {
-	postData := "{\"text\":\"[" + c.username + "] " + strings.ToUpper(c.level) + " <service:" + c.name + ">" + c.promote + c.note + "Current value:" + c.value + "\", \"icon_emoji\":\"" + c.icon_emoji + "\", \"username\":\"" + c.username + "\"}"
+	postData := "{\"text\":\"[" + c.username + "] " + strings.ToUpper(c.level) + " <service:" + c.name + ">" + c.prompt + c.note + "Current value:" + c.value + "\", \"icon_emoji\":\"" + c.icon_emoji + "\", \"username\":\"" + c.username + "\"}"
 	resp, err := http.PostForm(c.webhook, url.Values{"payload": {postData}})
 	if err != nil {
 		return fmt.Errorf("httpservice.slack invoke slack error: %v\n", err)
