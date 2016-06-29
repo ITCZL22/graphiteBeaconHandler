@@ -14,7 +14,6 @@ type alter struct {
 	MailTo   []string `json:"mail_to"`
 	Slack    struct {
 		Webhook  string
-		Prompt   string
 		Username string
 	}
 	Host string

@@ -8,8 +8,7 @@
         ],
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
-            "prompt": "itczl.access.qps.uve-service-main_feed",
-            "username": "ITCZL Alter"
+            "username": "ITCZL Alert"
         }
     },
     "main_feed_response_time":
@@ -21,8 +20,7 @@
         ],
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
-            "prompt": "itczl.access.response_time.uve-service-main_feed.mean",
-            "username": "ITCZL Alter"
+            "username": "ITCZL Alert"
         }
     },
     "hosts": 
