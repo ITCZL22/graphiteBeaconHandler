@@ -1,16 +1,17 @@
 {
   "graphite_url": "http://10.77.96.122:8085",
-  "public_graphite_url": "http://graphite.uve.pw",
+  "public_graphite_url": "http://graphite.itczl.com",
   "interval": "15minute",
   "logging": "debug",
-  "prefix": "[UVE Alert56]",
+  "prefix": "[ITCZL Alert]",
 
-  "normal_handlers": ["cli"],
-  "warning_handlers": ["cli"],
-  "critical_handlers": ["cli"],
+  "normal_handlers": ["http"],
+  "warning_handlers": ["http"],
+  "critical_handlers": ["http"],
 
-  "cli": {
-      "command": "/data0/uve_admin/graphite-beacon/cli/cli_zhenliang.sh ${name} ${level} ${value} ${limit_value}"
+  "http": {
+      "url": "http://10.77.96.56:8762",
+      "method": "POST"
   },
 
   "debug": true,
@@ -18,7 +19,7 @@
   "alerts": [
     {
       "name": "main_feed_qps",
-      "query": "uve.access.qps.uve-service-main_feed",
+      "query": "itczl.access.qps.uve-service-main_feed",
       "source": "graphite",
       "method": "average",
       "interval": "10minute",
@@ -32,20 +33,7 @@
     },
     {
       "name": "main_feed_response_time",
-      "query": "uve.access.response_time.interface-feed-wb_feeds-php.mean",
-      "source": "graphite",
-      "method": "average",
-      "interval": "10minute",
-      "no_data": "warning",
-      "history_size": "15day",
-      "rules": [
-        "warning: > 100",
-        "critical: > 160"
-      ]
-    },
-    {
-      "name": "(idx)main_feed_response_time",
-      "query": "uve.access.response_time.uve-service-main_feed.mean",
+      "query": "itczl.access.response_time.uve-service-main_feed.mean",
       "source": "graphite",
       "method": "average",
       "interval": "10minute",
@@ -54,8 +42,8 @@
       "rules": [
         "warning: < 25",
         "critical: < 10",
-        "warning: > 140",
-        "critical: > 170"
+        "warning: > 130",
+        "critical: > 155"
       ]
     }
   ]
