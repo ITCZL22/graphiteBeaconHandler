@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/smtp"
 	"net/url"
+	"strings"
 	"time"
 
 	"itczl.com/itczl/graphiteBeaconHandler/config"
@@ -45,7 +46,11 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	//解析req参数
 	req.ParseForm()
 
-	v := c.sc[req.Form["alert"][0]]
+	name := req.Form["alert"][0]
+	if strings.ContainsAny(name, ":") {
+		name = strings.SplitN(name, ":", 2)[0]
+	}
+	v := c.sc[name]
 	c.to = v.MailTo
 	c.from = v.MailFrom
 	c.webhook = v.Slack.Webhook

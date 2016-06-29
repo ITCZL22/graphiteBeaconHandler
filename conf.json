@@ -1,5 +1,5 @@
 {
-    "main_feed_qps":
+    "UVE":
     {
         "mail_from": "itczl@itczl.com",
         "mail_to": [
@@ -8,19 +8,31 @@
         ],
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
-            "username": "ITCZL Alert"
+            "username": "UVE Alert"
+        }
+    },
+    "RENDER":
+    {
+        "mail_from": "itczl@itczl.com",
+        "mail_to": [
+            "abc@itczl.com",
+            "def@itczl.com"
+        ],
+        "slack": {
+            "webhook": "https://hooks.slack.com/services/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",
+            "username": "RENDER Alert"
         }
     },
     "main_feed_response_time":
     {
         "mail_from": "itczl@itczl.com",
         "mail_to": [
-            "xxx@itczl.com",
-            "yyy@itczl.com"
+            "hig@itczl.com",
+            "klm@itczl.com"
         ],
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
-            "username": "ITCZL Alert"
+            "username": "main_feed_respoone_time Alert"
         }
     },
     "hosts": 
