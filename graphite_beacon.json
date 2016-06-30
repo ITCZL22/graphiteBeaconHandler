@@ -2,7 +2,6 @@
   "graphite_url": "http://10.77.96.122:8085",
   "public_graphite_url": "http://graphite.itczl.com",
   "interval": "15minute",
-  "logging": "debug",
   "prefix": "[ITCZL Alert]",
 
   "normal_handlers": ["http"],
@@ -13,8 +12,6 @@
       "url": "http://10.77.96.56:8762",
       "method": "POST"
   },
-
-  "debug": true,
 
   "alerts": [
     {

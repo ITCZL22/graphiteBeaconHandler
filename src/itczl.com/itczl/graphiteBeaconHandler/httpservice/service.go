@@ -79,8 +79,8 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 func (c *serverContext) mail() error {
-	msg := []byte("To: zhenliang@staff.weibo.com\r\n" +
-		"Subject: UVE Alter\r\n" +
+	msg := []byte("To: " + strings.Join(c.to, " ") + "\r\n" +
+		"Subject: " + c.username + "\r\n" +
 		"\r\n" +
 		c.req.Form["desc"][0])
 	err := smtp.SendMail("127.0.0.1:25", nil, c.from, c.to, msg)
