@@ -1,7 +1,7 @@
 ## graphiteBeaconHandler
 ### Features
     graphite-beacon对于所有alert只支持全局通知,graphiteBeaconHandler可以对不同的alert支持不同的通知
-    目前支持的通知方式有邮件和slack
+    目前支持的通知方式Email和Slack
 ### Service Config Example
 [conf.json](./conf.json)
 ### Graphite_beacon Config Example 
