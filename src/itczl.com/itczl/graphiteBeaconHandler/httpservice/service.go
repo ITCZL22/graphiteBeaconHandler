@@ -19,6 +19,7 @@ import (
 type serverContext struct {
 	sc                            config.Config
 	to                            []string
+	notice                        map[string]bool
 	from                          string
 	req                           *http.Request
 	webhook, username, icon_emoji string
@@ -55,6 +56,7 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	c.from = v.MailFrom
 	c.webhook = v.Slack.Webhook
 	c.username = v.Slack.Username
+	c.notice = v.Notice
 	c.req = req
 
 	if c.req.Form["level"][0] == "warning" {
@@ -65,16 +67,20 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		c.icon_emoji = ":x:"
 	}
 
-	if err := c.mail(); err != nil {
-		log.Printf("%v\n", err)
-		io.WriteString(w, "send mail error\n")
-		return
+	if c.notice["mail"] {
+		if err := c.mail(); err != nil {
+			log.Printf("%v\n", err)
+			io.WriteString(w, "send mail error\n")
+			return
+		}
 	}
 
-	if err := c.slack(); err != nil {
-		log.Printf("%v\n", err)
-		io.WriteString(w, "invoke slack error\n")
-		return
+	if c.notice["slack"] {
+		if err := c.slack(); err != nil {
+			log.Printf("%v\n", err)
+			io.WriteString(w, "invoke slack error\n")
+			return
+		}
 	}
 }
 

@@ -9,6 +9,10 @@
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
             "username": "UVE Alert"
+        },
+        "notice":{
+            "mail": true,
+            "slack": false 
         }
     },
     "RENDER":
@@ -21,6 +25,10 @@
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
             "username": "RENDER Alert"
+        },
+        "notice":{
+            "mail": true,
+            "slack": true
         }
     },
     "main_feed_response_time":
@@ -33,6 +41,10 @@
         "slack": {
             "webhook": "https://hooks.slack.com/services/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",
             "username": "main_feed_respoone_time Alert"
+        },
+        "notice":{
+            "mail": true,
+            "slack": true
         }
     },
     "hosts": 

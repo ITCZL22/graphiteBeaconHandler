@@ -16,7 +16,8 @@ type alter struct {
 		Webhook  string
 		Username string
 	}
-	Host string
+	Notice map[string]bool
+	Host   string
 }
 
 type Config map[string]alter
