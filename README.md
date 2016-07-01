@@ -1,10 +1,10 @@
 ## graphiteBeaconHandler
 ### Features
-    graphite-beacon对于所有alert只支持全局通知,graphiteBeaconHandler可以对不同的alert支持不同的通知
-    目前支持的通知方式Email和Slack
+- 对不同graphite_beacon的alert支持不同的报警分组
+- 相同前缀的alert使用同一组报警
+- 自定义报警方式(目前支持mail & slack)
+
 ### Service Config Example
 [conf.json](./conf.json)
 ### Graphite_beacon Config Example 
 [graphite_beacon.json](./graphite_beacon.json)
-### Prefix--Group Notice
-    当graphite_beacon多组alert使用相同的通知时，可以利用前缀。相同前缀的alert使用conf.json中由前缀命名的通知组
