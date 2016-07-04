@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"itczl.com/itczl/graphiteBeaconHandler/config"
+	"itczl.com/itczl/graphitebeaconhandler/config"
 )
 
 type serverContext struct {
