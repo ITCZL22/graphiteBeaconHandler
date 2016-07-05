@@ -43,7 +43,7 @@
             "username": "main_feed_respoone_time Alert"
         },
         "notice":{
-            "mail": true,
+            "mail": false,
             "slack": true
         }
     },

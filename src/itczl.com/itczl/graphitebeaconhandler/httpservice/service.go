@@ -4,6 +4,7 @@
 package httpservice
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -97,11 +98,20 @@ func (c *serverContext) mail() error {
 }
 
 func (c *serverContext) slack() error {
-	postData := "{\"text\":\"" + c.req.Form["desc"][0] + "\", \"username\":\"" + c.username + "\", \"icon_emoji\":\"" + c.icon_emoji + "\"}"
-
-	resp, err := http.PostForm(c.webhook, url.Values{"payload": {postData}})
+	type postData struct {
+		Text       string `json:"text"`
+		Username   string `json:"username"`
+		Icon_emoji string `json:"icon_emoji"`
+	}
+	pd := postData{c.req.Form["desc"][0], c.username, c.icon_emoji}
+	p, err := json.Marshal(pd)
 	if err != nil {
-		return fmt.Errorf("httpservice.slack invoke slack error: %v\n", err)
+		return fmt.Errorf("httpservice.slack marshal error: %v\n", err)
+	}
+
+	resp, err := http.PostForm(c.webhook, url.Values{"payload": {string(p)}})
+	if err != nil {
+		return fmt.Errorf("httpservice.slack request slack error: %v\n", err)
 	}
 	fmt.Println(resp.Status)
 	return nil
