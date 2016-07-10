@@ -31,7 +31,7 @@
             "slack": true
         }
     },
-    "main_feed_response_time":
+    "idx_response_time":
     {
         "mail_from": "itczl@itczl.com",
         "mail_to": [

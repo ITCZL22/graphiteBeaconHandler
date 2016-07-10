@@ -44,6 +44,19 @@
       ]
     },
     {
+      "name": "idx_response_time",
+      "query": "itczl.access.response_time.idx",
+      "source": "graphite",
+      "method": "average",
+      "interval": "10minute",
+      "no_data": "warning",
+      "history_size": "15day",
+      "rules": [
+        "warning: > 130",
+        "critical: > 155"
+      ]
+    },
+    {
         "name": "RENDER:failPercent",
         "query": "render.*.*.failPercent",
         "method": "last_value",
