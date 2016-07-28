@@ -68,11 +68,10 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		c.icon_emoji = ":x:"
 	}
 
-	if c.notice["mail"] {
+	if c.req.Form["noemail"] == nil && c.notice["mail"] {
 		if err := c.mail(); err != nil {
 			log.Printf("%v\n", err)
 			io.WriteString(w, "send mail error\n")
-			return
 		}
 	}
 
@@ -80,7 +79,6 @@ func (c *serverContext) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		if err := c.slack(); err != nil {
 			log.Printf("%v\n", err)
 			io.WriteString(w, "invoke slack error\n")
-			return
 		}
 	}
 }
