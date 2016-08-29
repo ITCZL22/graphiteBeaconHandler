@@ -18,5 +18,5 @@
 - noemail: 可选参数,noemail=1不启用邮件通知,优先级大于配置文件
 
 ### reference
-- [graphte](https://github.com/klen/graphite-beacon)
+- [graphite](https://github.com/klen/graphite-beacon)
 - [graphite-beacon](https://github.com/graphite-project/graphite-web)
