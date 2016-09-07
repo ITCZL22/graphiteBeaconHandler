@@ -11,7 +11,7 @@
 [graphite_beacon.json](./graphite_beacon.json)
 
 ### Http Request
-- curl -X POST http://10.77.88.99:8765 -d "level=warning&desc=describe&alert=ITCZL:XXXX&noemail=1"
+- curl -X POST http://itczl.com:8765 -d "level=warning&desc=describe&alert=ITCZL:XXXX&noemail=1"
 - level: 报警级别
 - desc: 报警内容
 - alert: 报警分组
