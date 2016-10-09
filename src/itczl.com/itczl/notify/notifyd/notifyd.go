@@ -8,8 +8,8 @@ import (
 	"log"
 	"os"
 
-	"itczl.com/itczl/graphitebeaconhandler/config"
-	"itczl.com/itczl/graphitebeaconhandler/httpservice"
+	"itczl.com/itczl/notify/config"
+	"itczl.com/itczl/notify/httpservice"
 )
 
 const (

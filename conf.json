@@ -7,7 +7,7 @@
             "yyy@itczl.com"
         ],
         "slack": {
-            "webhook": "https://hooks.slack.com/services/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",
+            "webhook": "https://hooks.slack.com/services/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--test",
             "username": "UVE Alert"
         },
         "notice":{
@@ -49,6 +49,6 @@
     },
     "hosts": 
     {
-        "host": "10.77.96.56:8762"
+        "host": "itczl.com:8762"
     }
 }

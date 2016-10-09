@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 )
 
-type alter struct {
+type AlertConf struct {
 	MailFrom string   `json:"mail_from"`
 	MailTo   []string `json:"mail_to"`
 	Slack    struct {
@@ -20,7 +20,7 @@ type alter struct {
 	Host   string
 }
 
-type Config map[string]alter
+type Config map[string]AlertConf
 
 func Parse(configFile string) (Config, error) {
 	c, err := ioutil.ReadFile(configFile)

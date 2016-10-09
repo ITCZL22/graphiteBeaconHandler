@@ -1,3 +1,3 @@
 
 gbh:
-	go install itczl.com/itczl/graphitebeaconhandler/gbhserver
+	go install itczl.com/itczl/notify/notifyd

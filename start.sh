@@ -1,2 +1,2 @@
 #!/bin/bash
-path/gbhserver -conf path/conf.json  > path/graphiteBeaconHandler.log 2>&1 &
+path/notifyd -conf path/conf.json  > path/notify.log 2>&1 &
